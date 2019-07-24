@@ -1,0 +1,11 @@
+---
+Name: elemental_site_search
+After: 'elemental'
+---
+SilverStripe\CMS\Controllers\ContentController:
+  extensions:
+    - jbennecker\ElementalSiteSearch\ContentControllerSearchExtension
+
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - SiteTreeSearchExtension\SiteTreeSearchExtension
