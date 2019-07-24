@@ -1,5 +1,4 @@
 <?php
-
 namespace jbennecker\ElementalSiteSearch;
 
 use SilverStripe\Core\Config\Config;
@@ -10,9 +9,7 @@ use SilverStripe\View\SSViewer;
 
 class SiteTreeSearchExtension extends DataExtension
 {
-    /**
-     * {@inheritDoc}
-     */
+
     private static $db = [
         'Title' => 'Varchar(255)',
         'SearchContent' => 'Text',
@@ -21,9 +18,6 @@ class SiteTreeSearchExtension extends DataExtension
         'Weight' => 'Int',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     private static $indexes = [
         'SearchFields' => [
             'type' => 'fulltext',
@@ -31,24 +25,15 @@ class SiteTreeSearchExtension extends DataExtension
         ],
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     private static $defaults = [
         'ShowInSearch' => true,
         'Weight' => 1,
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     private static $create_table_options = [
         MySQLSchemaManager::ID => 'ENGINE=MyISAM',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     public function onBeforeWrite()
     {
         parent::onBeforeWrite();
@@ -62,7 +47,7 @@ class SiteTreeSearchExtension extends DataExtension
      *
      * @return string
      */
-    protected function collateSearchContent()
+    private function collateSearchContent()
     {
         // Get the original theme
         $originalThemes = SSViewer::get_themes();
@@ -91,9 +76,6 @@ class SiteTreeSearchExtension extends DataExtension
         return $content;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function updateSettingsFields(&$fields)
     {
         $fields->insertAfter('ShowInMenus', CheckboxField::create('ShowInSearch', 'Show in search?'));

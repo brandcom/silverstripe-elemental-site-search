@@ -1,7 +1,6 @@
 <?php
 namespace jbennecker\ElementalSiteSearch;
 
-use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Extension;
 use SilverStripe\ORM\FieldType\DBField;
 
@@ -23,7 +22,7 @@ class ContentControllerSearchExtension extends Extension
         $data = [
             'Results' => $form->getResults(),
             'Query' => DBField::create_field('Text', $form->getSearchQuery()),
-            'Title' => _t('ContentControllerSearchExtension.PageTitle', 'Search results'),
+            'Title' => _t(__CLASS__ . '.PAGE_TITLE', 'Search results'),
         ];
         return $this->owner->customise($data)->renderWith(['Page_results', 'Page']);
     }

@@ -31,10 +31,10 @@ class SearchForm extends Form
         $name = 'SearchForm';
 
         $fields = FieldList::create(
-            TextField::create('query', _t('SearchForm.FieldLabel', 'Search'))
+            TextField::create('query', _t(__CLASS__ . '.SEARCH', 'Search'))
         );
         $actions = FieldList::create(
-            FormAction::create('results', _t('SearchForm.ButtonText', 'Go'))
+            FormAction::create('results', _t(__CLASS__ . '.GO', 'Go'))
         );
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
