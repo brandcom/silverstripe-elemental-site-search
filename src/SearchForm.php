@@ -1,11 +1,11 @@
 <?php
-
 namespace jbennecker\ElementalSiteSearch;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\RequestHandler;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\Validator;
@@ -13,7 +13,7 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\ORM\Queries\SQLSelect;
 
-class SearchForm extends SilverStripe\Forms\Form
+class SearchForm extends Form
 {
 
     private static $casting = [
