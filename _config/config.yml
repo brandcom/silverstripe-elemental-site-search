@@ -8,4 +8,4 @@ SilverStripe\CMS\Controllers\ContentController:
 
 SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - SiteTreeSearchExtension\SiteTreeSearchExtension
+    - jbennecker\ElementalSiteSearch\SiteTreeSearchExtension
