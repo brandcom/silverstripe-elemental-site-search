@@ -1,8 +1,12 @@
 <?php
+
 namespace jbennecker\ElementalSiteSearch;
 
+use DNADesign\Elemental\Extensions\ElementalPageExtension;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\Connect\MySQLSchemaManager;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\View\SSViewer;
@@ -10,6 +14,9 @@ use SilverStripe\View\SSViewer;
 class SiteTreeSearchExtension extends DataExtension
 {
 
+    /**
+     * @var array
+     */
     private static $db = [
         'Title' => 'Varchar(255)',
         'SearchContent' => 'Text',
@@ -18,6 +25,9 @@ class SiteTreeSearchExtension extends DataExtension
         'Weight' => 'Int',
     ];
 
+    /**
+     * @var array
+     */
     private static $indexes = [
         'SearchFields' => [
             'type' => 'fulltext',
@@ -25,11 +35,17 @@ class SiteTreeSearchExtension extends DataExtension
         ],
     ];
 
+    /**
+     * @var array
+     */
     private static $defaults = [
         'ShowInSearch' => true,
         'Weight' => 1,
     ];
 
+    /**
+     * @var array
+     */
     private static $create_table_options = [
         MySQLSchemaManager::ID => 'ENGINE=MyISAM',
     ];
@@ -49,11 +65,41 @@ class SiteTreeSearchExtension extends DataExtension
      */
     private function collateSearchContent()
     {
+        // Get the page
+        /** @var SiteTree $page */
+        $page = $this->getOwner();
+
+        // Get the page's default content if we have any
+        /** @var string $content */
+        $content = $this->getOwner()->Content;
+
+        if (self::isElementalPage($page)) {
+            // Get the page's elemental content
+            $content .= $this->collateSearchContentFromElements();
+        }
+
+        return $content;
+    }
+
+    /**
+     * @param SiteTree $page
+     * @return mixed
+     */
+    private static function isElementalPage($page)
+    {
+        return $page::has_extension(ElementalPageExtension::class);
+    }
+
+    /**
+     * @return string|string[]|null
+     */
+    private function collateSearchContentFromElements()
+    {
         // Get the original theme
         $originalThemes = SSViewer::get_themes();
 
-        // Get the page content if we have any
-        $content = $this->getOwner()->Content;
+        // Init content
+        $content = '';
 
         try {
             // Enable frontend themes in order to correctly render the elements as they would be for the frontend
@@ -76,6 +122,9 @@ class SiteTreeSearchExtension extends DataExtension
         return $content;
     }
 
+    /**
+     * @param FieldList $fields
+     */
     public function updateSettingsFields(&$fields)
     {
         $fields->insertAfter('ShowInMenus', CheckboxField::create('ShowInSearch', 'Show in search?'));
