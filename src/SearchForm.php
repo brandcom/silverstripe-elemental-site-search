@@ -86,6 +86,9 @@ class SearchForm extends Form
         );
         $sql->setOrderBy("Relevance", "DESC");
         $sql->setOrderBy(["Relevance" => "DESC", "Created" => "DESC"]);
+
+        $this->extend('updateSearchQuery', $sql);
+
         $totalCount = $sql->count();
         $sql->setLimit($pageLength, $start);
         $result = $sql->execute();
