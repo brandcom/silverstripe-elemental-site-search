@@ -13,7 +13,6 @@ use SilverStripe\View\SSViewer;
 
 class SiteTreeSearchExtension extends DataExtension
 {
-
     /**
      * @var array
      */
@@ -59,11 +58,9 @@ class SiteTreeSearchExtension extends DataExtension
     /**
      * Generate the search content to use for the searchable object
      *
-     * We just retrive it from the templates.
-     *
-     * @return string
+     * We just retrieve it from the templates.
      */
-    private function collateSearchContent()
+    private function collateSearchContent(): string
     {
         // Get the page
         /** @var SiteTree $page */
@@ -122,10 +119,7 @@ class SiteTreeSearchExtension extends DataExtension
         return $content;
     }
 
-    /**
-     * @param FieldList $fields
-     */
-    public function updateSettingsFields(&$fields)
+    public function updateSettingsFields(FieldList &$fields)
     {
         $fields->insertAfter('ShowInMenus', CheckboxField::create('ShowInSearch', 'Show in search?'));
     }

@@ -27,7 +27,6 @@ class SearchForm extends Form
         FieldList $actions = null,
         Validator $validator = null
     ) {
-
         $name = 'SearchForm';
 
         $fields = FieldList::create(
@@ -42,9 +41,10 @@ class SearchForm extends Form
         $this->disableSecurityToken();
     }
 
-    public function getSearchQuery()
+    public function getSearchQuery(): ?string
     {
         $request = $this->getRequestHandler()->getRequest();
+
         return $request->requestVar('query');
     }
 

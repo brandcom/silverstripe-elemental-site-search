@@ -3,7 +3,7 @@
     "license": "MIT",
     "type": "silverstripe-vendormodule",
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.4.0",
         "silverstripe/framework": "^4",
         "silverstripe/cms": "^4",
         "dnadesign/silverstripe-elemental": "^4"
