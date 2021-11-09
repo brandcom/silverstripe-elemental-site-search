@@ -80,7 +80,7 @@ class SiteTreeSearchExtension extends DataExtension
 
     /**
      * @param SiteTree $page
-     * @return mixed
+     * @return bool
      */
     private static function isElementalPage($page)
     {

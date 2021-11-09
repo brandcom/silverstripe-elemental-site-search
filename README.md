@@ -13,34 +13,34 @@ Basic site search for the SilverStripe Elemental module. It works by saving a te
 ### Install this module with composer
 
     composer require jbennecker/silverstripe-elemental-site-search
-    
+
 Make sure you don't have `FulltextSearchable` enabled in `_config.php`.
 
 ### Add the search form
 
-To add the search form, add `$SearchForm` anywhere in your template. 
+To add the search form, add `$SearchForm` anywhere in your template.
 
 For example in Header.ss
 
     ...
     <div class="search-form">
         $SearchForm
-    </div>      
+    </div>
     ...
 
-### Override the template 
+### Override the template
 
-Lastly you can overrde the template for the result page. 
+Lastly you can override the template for the result page.
 
 app/templates/Layout/Page_results.ss
 
     <div id="Content" class="searchResults">
         <h1>$Title</h1>
-    
+
         <% if $Query %>
             <p class="searchQuery"><strong>You searched for &quot;{$Query}&quot;</strong></p>
         <% end_if %>
-    
+
         <% if $Results %>
         <ul id="SearchResults">
             <% loop $Results %>
@@ -53,7 +53,7 @@ app/templates/Layout/Page_results.ss
                     <% end_if %>
                 </a>
                 <p>$Content.LimitWordCountXML</p>
-                <a class="readMoreLink" href="$Link" 
+                <a class="readMoreLink" href="$Link"
                     title="Read more about &quot;{$Title}&quot;"
                     >Read more about &quot;{$Title}&quot;...</a>
             </li>
@@ -62,7 +62,7 @@ app/templates/Layout/Page_results.ss
         <% else %>
         <p>Sorry, your search query did not return any results.</p>
         <% end_if %>
-    
+
         <% if $Results.MoreThanOnePage %>
         <div id="PageNumbers">
             <% if $Results.NotLastPage %>

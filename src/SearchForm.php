@@ -15,7 +15,6 @@ use SilverStripe\ORM\Queries\SQLSelect;
 
 class SearchForm extends Form
 {
-
     private static $casting = [
         'SearchQuery' => 'Text',
     ];
@@ -40,13 +39,6 @@ class SearchForm extends Form
         parent::__construct($controller, $name, $fields, $actions, $validator);
         $this->setFormMethod('get');
         $this->disableSecurityToken();
-    }
-
-    public function getSearchQuery(): ?string
-    {
-        $request = $this->getRequestHandler()->getRequest();
-
-        return $request->requestVar('query');
     }
 
     public function getResults()
@@ -110,6 +102,16 @@ class SearchForm extends Form
         return $list;
     }
 
+    public function getSearchQuery(): ?string
+    {
+        $request = $this->getRequestHandler()->getRequest();
+
+        return $request->requestVar('query');
+    }
+
+    /**
+     * @return string
+     */
     private function addStarsToKeywords($keywords)
     {
         $keywords = trim($keywords);
