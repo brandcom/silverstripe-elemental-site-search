@@ -31,6 +31,7 @@ class SearchForm extends Form
         $fields = FieldList::create(
             TextField::create('query', _t(__CLASS__ . '.SEARCH', 'Search'))
                 ->setAttribute('placeholder', _t(__CLASS__ . '.SEARCH', 'Search'))
+                ->setAttribute('minlength', ('4')),
         );
         $actions = FieldList::create(
             FormAction::create('results', _t(__CLASS__ . '.GO', 'Go'))
