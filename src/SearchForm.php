@@ -69,12 +69,12 @@ class SearchForm extends Form
         // Build query
         $sql = new SQLSelect();
         $sql->setDistinct(true);
-        $sql->setFrom('SiteTree');
+        $sql->setFrom('SiteTree_Live');
         $sql->addSelect(
-            "(( 2 * (MATCH (`SiteTree`.`Title`) AGAINST ('{$keywords}' IN BOOLEAN MODE))) +( 0.5 * (MATCH (`SiteTree`.`SearchContent`) AGAINST ('{$keywords}' IN BOOLEAN MODE))) +( 1.2 * (MATCH (`SiteTree`.`Keywords`) AGAINST ('{$keywords}' IN BOOLEAN MODE))) +Weight) AS Relevance"
+            "(( 2 * (MATCH (`SiteTree_Live`.`Title`) AGAINST ('{$keywords}' IN BOOLEAN MODE))) +( 0.5 * (MATCH (`SiteTree_Live`.`SearchContent`) AGAINST ('{$keywords}' IN BOOLEAN MODE))) +( 1.2 * (MATCH (`SiteTree_Live`.`Keywords`) AGAINST ('{$keywords}' IN BOOLEAN MODE))) +Weight) AS Relevance"
         );
         $sql->setWhere(
-            "(MATCH (`SiteTree`.`Title`,`SiteTree`.`SearchContent`,`SiteTree`.`Keywords`) AGAINST ('{$keywords}' IN BOOLEAN MODE))"
+            "(MATCH (`SiteTree_Live`.`Title`,`SiteTree_Live`.`SearchContent`,`SiteTree_Live`.`Keywords`) AGAINST ('{$keywords}' IN BOOLEAN MODE))"
         );
         $sql->setOrderBy("Relevance", "DESC");
         $sql->setOrderBy(["Relevance" => "DESC", "Created" => "DESC"]);
