@@ -1,4 +1,5 @@
 <?php
+
 namespace jbennecker\ElementalSiteSearch;
 
 use SilverStripe\CMS\Model\SiteTree;
@@ -79,6 +80,10 @@ class SearchForm extends Form
         $sql->setOrderBy("Relevance", "DESC");
         $sql->setOrderBy(["Relevance" => "DESC", "Created" => "DESC"]);
 
+        $this->extend('updateSearchQuery', $sql);
+
+        // Add permission check
+        $sql->addWhere(["ShowInSearch" => true]);
         $this->extend('updateSearchQuery', $sql);
 
         $totalCount = $sql->count();
