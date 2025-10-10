@@ -1,12 +1,11 @@
 # SilverStripe Elemental Site Search Module
-Basic site search for the SilverStripe Elemental module. It works by saving a text reprentation of the elemental area to an extra field in SiteTree.
 
+Basic site search for the SilverStripe Elemental module. It works by saving a text reprentation of the elemental area to an extra field in SiteTree.
 
 ## Requires
 
-* [SilverStripe](https://www.silverstripe.org/)
-* [SilverStripe Elemental](https://github.com/dnadesign/silverstripe-elemental)
-
+-   [SilverStripe](https://www.silverstripe.org/)
+-   [SilverStripe Elemental](https://github.com/dnadesign/silverstripe-elemental)
 
 ## Usage
 
@@ -88,3 +87,12 @@ app/templates/Layout/Page_results.ss
 ### Clear caches
 
 Then finally add ?flush=1 to the URL and you should see the new template.
+
+### Customization
+
+You can customize the search form by defining the following values in your `app/_config/site-search.yml`:
+
+```yaml
+jbennecker\ElementalSiteSearch\SearchForm:
+    search_field_min_length: 3 # Minimum length of the search query (default: 4)
+```

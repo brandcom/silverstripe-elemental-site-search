@@ -16,6 +16,11 @@ use SilverStripe\ORM\Queries\SQLSelect;
 
 class SearchForm extends Form
 {
+        /**
+     * @config
+     */
+    private static $search_field_min_length = 4;
+
     private static $casting = [
         'SearchQuery' => 'Text',
     ];
@@ -30,7 +35,7 @@ class SearchForm extends Form
         $fields = FieldList::create(
             TextField::create('query', _t(__CLASS__ . '.SEARCH', 'Search'))
                 ->setAttribute('placeholder', _t(__CLASS__ . '.SEARCH', 'Search'))
-                ->setAttribute('minlength', ('4')),
+                ->setAttribute("minlength", $this->config()->get("search_field_min_length")),
         );
         $actions = FieldList::create(
             FormAction::create('results', _t(__CLASS__ . '.GO', 'Go'))
