@@ -28,10 +28,18 @@ class SiteTreeSearchExtension extends DataExtension
      * @var array
      */
     private static $indexes = [
-        'SearchFields' => [
+        'Title' => [
             'type' => 'fulltext',
-            'columns' => ['Title', 'SearchContent', 'Keywords'],
+            'columns' => ['Title'],
         ],
+        'Keywords' => [
+            'type' => 'fulltext',
+            'columns' => ['Keywords'],
+        ],
+        'SearchContent' => [
+            'type' => 'fulltext',
+            'columns' => ['SearchContent'],
+        ]
     ];
 
     /**
@@ -46,7 +54,7 @@ class SiteTreeSearchExtension extends DataExtension
      * @var array
      */
     private static $create_table_options = [
-        MySQLSchemaManager::ID => 'ENGINE=MyISAM',
+        MySQLSchemaManager::ID => 'ENGINE=InnoDB',
     ];
 
     public function onBeforeWrite()
