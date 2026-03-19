@@ -76,7 +76,7 @@ class SiteTreeSearchExtension extends DataExtension
 
         // Get the page's default content if we have any
         /** @var string $content */
-        $content = $this->getOwner()->Content;
+        $content = $this->getOwner()->Content ?? '';
 
         if (self::isElementalPage($page)) {
             // Get the page's elemental content
