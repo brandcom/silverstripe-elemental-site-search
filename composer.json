@@ -1,5 +1,5 @@
 {
-    "name": "brandcom/silverstripe-elemental-site-search",
+    "name": "jbennecker/silverstripe-elemental-site-search",
     "license": "MIT",
     "type": "silverstripe-vendormodule",
     "require": {
@@ -10,7 +10,7 @@
     },
     "autoload": {
         "psr-4": {
-            "brandcom\\ElementalSiteSearch\\": "src/"
+            "jbennecker\\ElementalSiteSearch\\": "src/"
         }
     }
 }
