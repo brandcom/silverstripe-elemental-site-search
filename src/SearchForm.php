@@ -10,8 +10,8 @@ use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\Validator;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\PaginatedList;
+use SilverStripe\Model\List\ArrayList;
+use SilverStripe\Model\List\PaginatedList;
 use SilverStripe\ORM\Queries\SQLSelect;
 
 class SearchForm extends Form

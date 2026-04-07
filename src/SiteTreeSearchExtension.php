@@ -8,10 +8,10 @@ use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\Connect\MySQLSchemaManager;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\View\SSViewer;
 
-class SiteTreeSearchExtension extends DataExtension
+class SiteTreeSearchExtension extends Extension
 {
     /**
      * @var array
