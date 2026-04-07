@@ -1,16 +1,16 @@
 {
-    "name": "jbennecker/silverstripe-elemental-site-search",
+    "name": "brandcom/silverstripe-elemental-site-search",
     "license": "MIT",
     "type": "silverstripe-vendormodule",
     "require": {
-        "php": "^8.2 || ^8.3",
-        "silverstripe/framework": "^5.0",
-        "silverstripe/cms": "^5.0",
-        "dnadesign/silverstripe-elemental": "^5.0"
+        "php": "^8.2 || ^8.3 || ^8.4",
+        "silverstripe/framework": "^6",
+        "silverstripe/cms": "^6",
+        "dnadesign/silverstripe-elemental": "^6"
     },
     "autoload": {
         "psr-4": {
-            "jbennecker\\ElementalSiteSearch\\": "src/"
+            "brandcom\\ElementalSiteSearch\\": "src/"
         }
     }
 }
