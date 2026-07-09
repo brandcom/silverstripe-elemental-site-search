@@ -26,11 +26,11 @@ class SearchForm extends Form
     ];
 
     public function __construct(
-        RequestHandler $controller = null,
+        ?RequestHandler $controller = null,
         $name = 'SearchForm',
-        FieldList $fields = null,
-        FieldList $actions = null,
-        Validator $validator = null
+        ?FieldList $fields = null,
+        ?FieldList $actions = null,
+        ?Validator $validator = null
     ) {
         $fields = FieldList::create(
             TextField::create('query', _t(__CLASS__ . '.SEARCH', 'Search'))
