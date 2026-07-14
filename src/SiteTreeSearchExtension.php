@@ -130,4 +130,11 @@ class SiteTreeSearchExtension extends Extension
     {
         $fields->insertAfter('ShowInMenus', CheckboxField::create('ShowInSearch', 'Show in search?'));
     }
+
+    public function updateCMSFields(FieldList $fields): void
+    {
+        foreach (['SearchContent', 'Keywords', 'Weight'] as $fieldName) {
+            $fields->removeByName($fieldName);
+        }
+    }
 }
